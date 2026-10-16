@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg: #f3f0e4;
+  --card: #fffdf6;
+  --fg: #26301f;
+  --muted: #5f6753;
+  --line: #ddd7c1;
+  --primary: #2d6a3e;
+  --primary-fg: #ffffff;
+  --soft: #e3ecd3;
+  --earth: #8a5a2b;
+  --danger: #a93a28;
+  --sky: #e8f1e0;
+}
+
+.dark {
+  --bg: #101811;
+  --card: #18231a;
+  --fg: #e6ebdb;
+  --muted: #a1ac95;
+  --line: #2a3a2d;
+  --primary: #79c47d;
+  --primary-fg: #0d1a0f;
+  --soft: #22331f;
+  --earth: #c99a62;
+  --danger: #ef8a76;
+  --sky: #16231a;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-card: var(--card);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-primary: var(--primary);
+  --color-primary-fg: var(--primary-fg);
+  --color-soft: var(--soft);
+  --color-earth: var(--earth);
+  --color-danger: var(--danger);
+  --color-sky: var(--sky);
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-1.2deg); }
+  50% { transform: rotate(1.2deg); }
+}
+@keyframes pop {
+  from { transform: scale(0.92); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.tree-sway { transform-origin: 50% 100%; animation: sway 6s ease-in-out infinite; }
+.pop-in { animation: pop 0.25s ease-out; }
+.grow { transition: transform 1.2s cubic-bezier(.3,.9,.3,1), opacity 0.8s ease; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
