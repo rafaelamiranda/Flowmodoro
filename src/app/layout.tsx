@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
+import { MusicPlayer } from "@/components/MusicPlayer";
 import { Nav } from "@/components/Nav";
 import { RegisterSW } from "@/components/RegisterSW";
 import { TimerRuntime } from "@/features/timer/TimerRuntime";
@@ -35,9 +36,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Pular para o conteúdo
         </a>
         <Nav />
-        <main id="conteudo" className="mx-auto w-full max-w-5xl flex-1 px-4 pb-28 pt-5 sm:pb-10">
+        <main id="conteudo" className="mx-auto w-full max-w-5xl flex-1 px-4 pb-44 pt-5 sm:pb-24">
           {children}
         </main>
+        <MusicPlayer />
         <TimerRuntime />
         <RegisterSW />
       </body>
